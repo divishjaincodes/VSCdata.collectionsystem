@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Data Entry | VardaOne</title>
+
+    <link
+        rel="stylesheet"
+        href="/css/data-entry.css"
+    >
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+</head>
+
+
+<body>
+
+    <div class="data-entry-app">
+
+
+        <!-- SIDEBAR -->
+
+        <aside class="sidebar">
+
+            <div class="sidebar-brand">
+
+                <h1 class="brand-name">
+                    Varda<span>One</span>
+                </h1>
+
+                <p>
+                    ESG Data Collection System
+                </p>
+
+                <div class="role-badge">
+                    DATA COLLECTOR
+                </div>
+
+            </div>
+
+
+            <nav class="sidebar-nav">
+
+                <button
+                    type="button"
+                    class="nav-item active"
+                    data-page="entryPage"
+                    data-title="Emission Data Entry"
+                >
+
+                    <span class="nav-icon">
+                        +
+                    </span>
+
+                    <span>
+                        Data Entry
+                    </span>
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="nav-item"
+                    data-page="historyPage"
+                    data-title="Submission History"
+                >
+
+                    <span class="nav-icon">
+                        ≡
+                    </span>
+
+                    <span>
+                        My Submissions
+                    </span>
+
+                </button>
+
+            </nav>
+
+
+            <div class="sidebar-profile">
+
+                <div
+                    class="profile-avatar"
+                    id="collectorAvatar"
+                >
+                    DC
+                </div>
+
+
+                <div class="profile-copy">
+
+                    <strong id="sidebarCollectorName">
+                        Data Collector
+                    </strong>
+
+                    <span id="sidebarCompanyName">
+                        Loading company...
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <a
+                href="/logout"
+                class="sidebar-logout"
+                id="logoutButton"
+            >
+                Log Out
+            </a>
+
+        </aside>
+
+
+
+        <!-- MAIN AREA -->
+
+        <main class="main-area">
+
+
+            <!-- TOPBAR -->
+
+            <header class="topbar">
+
+                <div class="topbar-title">
+
+                    <span>
+                        DATA COLLECTION WORKSPACE
+                    </span>
+
+                    <strong id="currentPageTitle">
+                        Emission Data Entry
+                    </strong>
+
+                </div>
+
+
+                <div class="topbar-profile">
+
+                    <div
+                        class="profile-avatar"
+                        id="topbarCollectorAvatar"
+                    >
+                        DC
+                    </div>
+
+
+                    <div>
+
+                        <strong id="topbarCollectorName">
+                            Data Collector
+                        </strong>
+
+                        <span id="topbarCompanyName">
+                            Loading...
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+
+
+            <!-- CONTENT -->
+
+            <div class="content-area">
+
+
+                <!-- DATA ENTRY PAGE -->
+
+                <section
+                    class="collector-page active"
+                    id="entryPage"
+                >
+
+
+                    <div class="batch-shell">
+
+
+                        <div class="batch-heading">
+
+                            <div>
+
+                                <p class="eyebrow">
+                                    DATA COLLECTION
+                                </p>
+
+                                <h1>
+                                    Emission Data Entry
+                                </h1>
+
+                                <p>
+                                    Set the filing context once, then enter
+                                    multiple activity rows quickly.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- STEP 1: CONTEXT -->
+
+                        <section
+                            class="context-card"
+                            id="contextCard"
+                        >
+
+
+                            <div class="section-title-row">
+
+                                <div>
+
+                                    <span class="step-badge">
+                                        1
+                                    </span>
+
+
+                                    <div>
+
+                                        <h2>
+                                            Set filing context
+                                        </h2>
+
+                                        <p>
+                                            This context will apply to every
+                                            row in this batch.
+                                        </p>
+
+                                    </div>
+
+                                </div>
+
+
+                                <button
+                                    type="button"
+                                    id="editContextButton"
+                                    class="text-button hidden"
+                                >
+                                    Edit context
+                                </button>
+
+                            </div>
+
+
+
+                            <div
+                                class="context-grid"
+                                id="contextFormGrid"
+                            >
+
+
+                                <div class="compact-field">
+
+                                    <label for="plantSelect">
+                                        Plant
+                                    </label>
+
+                                    <select
+                                        id="plantSelect"
+                                        required
+                                    >
+                                        <option value="">
+                                            Select plant
+                                        </option>
+                                    </select>
+
+                                </div>
+
+
+
+                                <div class="compact-field">
+
+                                    <label for="reportingPeriod">
+                                        Filing period
+                                    </label>
+
+                                    <input
+                                        id="reportingPeriod"
+                                        type="month"
+                                        required
+                                    >
+
+                                </div>
+
+
+
+                                <div class="compact-field">
+
+                                    <label for="scopeSelect">
+                                        Scope
+                                    </label>
+
+                                    <select
+                                        id="scopeSelect"
+                                        required
+                                    >
+
+                                        <option value="">
+                                            Select scope
+                                        </option>
+
+                                        <option value="Scope 1">
+                                            Scope 1
+                                        </option>
+
+                                        <option value="Scope 2">
+                                            Scope 2
+                                        </option>
+
+                                        <option value="Scope 3">
+                                            Scope 3
+                                        </option>
+
+                                    </select>
+
+                                </div>
+
+
+
+                                <div class="compact-field">
+
+                                    <label for="factorSource">
+                                        Data source
+                                    </label>
+
+                                    <select
+                                        id="factorSource"
+                                        required
+                                        disabled
+                                    >
+                                        <option value="">
+                                            Select source
+                                        </option>
+                                    </select>
+
+                                </div>
+
+
+
+                                <div class="context-action">
+
+                                    <button
+                                        type="button"
+                                        class="primary-button"
+                                        id="startBatchButton"
+                                    >
+                                        Start data entry
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+
+
+                            <!-- LOCKED SESSION CONTEXT -->
+
+                            <div
+                                class="locked-context hidden"
+                                id="lockedContext"
+                            >
+
+                                <span>
+                                    <b>Plant:</b>
+                                    <em id="lockedPlant">—</em>
+                                </span>
+
+                                <span>
+                                    <b>Period:</b>
+                                    <em id="lockedPeriod">—</em>
+                                </span>
+
+                                <span>
+                                    <b>Scope:</b>
+                                    <em id="lockedScope">—</em>
+                                </span>
+
+                                <span>
+                                    <b>Source:</b>
+                                    <em id="lockedSource">—</em>
+                                </span>
+
+                            </div>
+
+
+                        </section>
+
+
+
+                        <!-- STEP 2: ENTRY TABLE -->
+
+                        <section
+                            class="entry-card hidden"
+                            id="entryWorkspace"
+                        >
+
+
+                            <div class="section-title-row">
+
+                                <div>
+
+                                    <span class="step-badge">
+                                        2
+                                    </span>
+
+
+                                    <div>
+
+                                        <h2>
+                                            Add emission activities
+                                        </h2>
+
+                                        <p>
+                                            Each row is saved as a separate
+                                            emission entry with its own evidence.
+                                        </p>
+
+                                    </div>
+
+                                </div>
+
+
+                                <div class="batch-counter">
+
+                                    <span id="savedCount">
+                                        0
+                                    </span>
+
+                                    saved
+
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="entry-table-wrap">
+
+
+                                <table class="entry-table">
+
+
+                                    <thead>
+
+                                        <tr>
+
+                                            <th class="col-category">
+                                                Category
+                                            </th>
+
+                                            <th class="col-details">
+                                                Activity details
+                                            </th>
+
+                                            <th class="col-qty">
+                                                Quantity
+                                            </th>
+
+                                            <th class="col-unit">
+                                                Unit
+                                            </th>
+
+                                            <th class="col-evidence">
+                                                Evidence
+                                            </th>
+
+                                            <th class="col-co2">
+                                                CO₂e
+                                            </th>
+
+                                            <th class="col-action">
+                                            </th>
+
+                                        </tr>
+
+                                    </thead>
+
+
+                                    <tbody id="entryRows">
+                                    </tbody>
+
+
+                                </table>
+
+
+                            </div>
+
+
+
+                            <div class="workspace-footer">
+
+
+                                <button
+                                    type="button"
+                                    class="secondary-button"
+                                    id="addRowButton"
+                                >
+                                    + Add another row
+                                </button>
+
+
+
+                                <div class="footer-actions">
+
+                                    <span
+                                        id="batchMessage"
+                                        class="batch-message"
+                                    >
+                                    </span>
+
+
+                                    <button
+                                        type="button"
+                                        class="primary-button"
+                                        id="saveAllButton"
+                                    >
+                                        Save all rows
+                                    </button>
+
+                                </div>
+
+
+                            </div>
+
+
+                        </section>
+
+
+                    </div>
+
+
+                </section>
+
+
+
+                <!-- SUBMISSION HISTORY PAGE -->
+
+                <section
+                    class="collector-page"
+                    id="historyPage"
+                >
+
+
+                    <div class="page-heading">
+
+
+                        <div>
+
+                            <span class="eyebrow">
+                                SUBMISSION RECORDS
+                            </span>
+
+                            <h1>
+                                My Submissions
+                            </h1>
+
+                            <p>
+                                View data entries submitted from your
+                                collector account.
+                            </p>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <div class="content-panel history-panel">
+
+
+                        <div class="panel-heading">
+
+
+                            <div>
+
+                                <span class="panel-eyebrow">
+                                    RECENT ENTRIES
+                                </span>
+
+                                <h2>
+                                    Submission History
+                                </h2>
+
+                            </div>
+
+
+                            <button
+                                type="button"
+                                class="secondary-btn"
+                                id="refreshHistoryButton"
+                            >
+                                Refresh
+                            </button>
+
+
+                        </div>
+
+
+
+                        <div class="table-wrapper">
+
+
+                            <table class="data-table">
+
+
+                                <thead>
+
+                                    <tr>
+
+                                        <th>
+                                            ID
+                                        </th>
+
+                                        <th>
+                                            Plant
+                                        </th>
+
+                                        <th>
+                                            Scope
+                                        </th>
+
+                                        <th>
+                                            Reporting Period
+                                        </th>
+
+                                        <th>
+                                            Category
+                                        </th>
+
+                                        <th>
+                                            Source
+                                        </th>
+
+                                        <th>
+                                            Quantity
+                                        </th>
+
+                                        <th>
+                                            Submitted
+                                        </th>
+
+                                        <th>
+                                            Status
+                                        </th>
+
+                                        <th>
+                                            Review Comment
+                                        </th>
+
+                                        <th>
+                                            Action
+                                        </th>
+
+                                        <th>
+                                            Evidence
+                                        </th>
+
+                                    </tr>
+
+                                </thead>
+
+
+                                <tbody id="submissionHistoryBody">
+
+                                    <tr class="table-empty-row">
+
+                                        <td colspan="12">
+                                            Loading submissions...
+                                        </td>
+
+                                    </tr>
+
+                                </tbody>
+
+
+                            </table>
+
+
+                        </div>
+
+
+                    </div>
+
+
+                </section>
+
+
+            </div>
+
+
+        </main>
+
+
+    </div>
+
+
+    <script src="/js/data-entry.js"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,1947 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>VSC Admin | VardaOne</title>
+
+    <link
+        rel="stylesheet"
+        href="/css/vsc-admin.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     APP SHELL
+===================================================== -->
+
+<div class="admin-app">
+
+
+    <!-- =================================================
+         SIDEBAR
+    ================================================== -->
+
+    <aside class="sidebar">
+
+
+        <div class="sidebar-brand">
+
+            <div class="brand-name">
+                Varda<span>One</span>
+            </div>
+
+            <p>
+                ESG Data Intelligence
+            </p>
+
+            <div class="role-badge">
+                VSC ADMIN
+            </div>
+
+        </div>
+
+
+
+        <nav class="sidebar-nav">
+
+
+            <button
+                type="button"
+                class="nav-item active"
+                data-page="dashboardPage"
+                data-title="Dashboard"
+            >
+
+                <span class="nav-icon">⌂</span>
+
+                <span>
+                    Dashboard
+                </span>
+
+            </button>
+
+
+
+            <button
+                type="button"
+                class="nav-item"
+                data-page="companiesPage"
+                data-title="Companies"
+            >
+
+                <span class="nav-icon">▣</span>
+
+                <span>
+                    Companies
+                </span>
+
+            </button>
+
+
+
+            <button
+                type="button"
+                class="nav-item"
+                data-page="viewDataPage"
+                data-title="View Data"
+            >
+
+                <span class="nav-icon">▤</span>
+
+                <span>
+                    View Data
+                </span>
+
+            </button>
+
+
+        </nav>
+
+
+
+        <div class="sidebar-profile">
+
+            <div class="profile-avatar">
+                VA
+            </div>
+
+            <div class="profile-copy">
+
+                <strong>
+                    VSC Admin
+                </strong>
+
+                <span>
+                    Platform Administrator
+                </span>
+
+            </div>
+
+        </div>
+
+        
+           <a href="/logout"
+            class="sidebar-logout"
+            id="logoutButton"
+        >
+            Log Out
+        </a>
+
+
+    </aside>
+
+
+
+    <!-- =================================================
+         MAIN AREA
+    ================================================== -->
+
+    <div class="main-area">
+
+
+        <!-- =============================================
+             TOPBAR
+        ============================================== -->
+
+        <header class="topbar">
+
+
+            <div class="topbar-title">
+
+                <span>
+                    VARDAONE ADMINISTRATION
+                </span>
+
+                <strong id="currentPageTitle">
+                    Dashboard
+                </strong>
+
+            </div>
+
+
+
+            <div class="topbar-profile">
+
+                <div class="profile-avatar">
+                    VA
+                </div>
+
+                <div>
+
+                    <strong>
+                        VSC Admin
+                    </strong>
+
+                    <span>
+                        Platform Administrator
+                    </span>
+
+                </div>
+
+            </div>
+
+
+        </header>
+
+
+
+        <!-- =============================================
+             CONTENT
+        ============================================== -->
+
+        <main class="content-area">
+
+
+
+            <!-- =================================================
+                 DASHBOARD PAGE
+            ================================================== -->
+
+            <section
+                class="admin-page active"
+                id="dashboardPage"
+            >
+
+
+                <div class="page-heading">
+
+
+                    <div>
+
+                        <span class="eyebrow">
+                            PLATFORM OVERVIEW
+                        </span>
+
+                        <h1>
+                            Dashboard
+                        </h1>
+
+                        <p>
+                            Manage client companies, plants and
+                            sustainability data access.
+                        </p>
+
+                    </div>
+
+
+
+                    <button
+                        type="button"
+                        class="primary-btn open-company-modal"
+                    >
+
+                        <span>+</span>
+
+                        Create Company
+
+                    </button>
+
+
+                </div>
+
+
+
+                <!-- =========================================
+                     DASHBOARD STATS
+                ========================================== -->
+
+                <div class="stats-grid">
+
+
+                    <article class="stat-card">
+
+                        <div class="stat-icon">
+                            C
+                        </div>
+
+                        <div>
+
+                            <span>
+                                Companies
+                            </span>
+
+                            <strong id="companyCount">
+                                0
+                            </strong>
+
+                            <small>
+                                Registered companies
+                            </small>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <article class="stat-card">
+
+                        <div class="stat-icon">
+                            P
+                        </div>
+
+                        <div>
+
+                            <span>
+                                Plants
+                            </span>
+
+                            <strong id="plantCount">
+                                0
+                            </strong>
+
+                            <small>
+                                Registered plants
+                            </small>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <article class="stat-card">
+
+                        <div class="stat-icon">
+                            A
+                        </div>
+
+                        <div>
+
+                            <span>
+                                Company Admins
+                            </span>
+
+                            <strong id="adminCount">
+                                0
+                            </strong>
+
+                            <small>
+                                Active admin accounts
+                            </small>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <article class="stat-card">
+
+                        <div class="stat-icon">
+                            D
+                        </div>
+
+                        <div>
+
+                            <span>
+                                Data Collectors
+                            </span>
+
+                            <strong id="collectorCount">
+                                0
+                            </strong>
+
+                            <small>
+                                Data-entry accounts
+                            </small>
+
+                        </div>
+
+                    </article>
+
+
+                </div>
+
+
+
+                <!-- =========================================
+                     DASHBOARD COMPANY LIST
+                ========================================== -->
+
+                <section class="content-panel dashboard-company-panel">
+
+
+                    <div class="panel-heading">
+
+
+                        <div>
+
+                            <span class="panel-eyebrow">
+                                CLIENT WORKSPACES
+                            </span>
+
+                            <h2>
+                                Companies
+                            </h2>
+
+                        </div>
+
+
+                        <button
+                            type="button"
+                            class="text-btn"
+                            id="dashboardManageCompanies"
+                        >
+
+                            Manage Companies →
+
+                        </button>
+
+
+                    </div>
+
+
+
+                    <div
+                        class="dashboard-company-list"
+                        id="dashboardCompanyList"
+                    >
+
+
+                        <div class="empty-state">
+
+
+                            <div class="empty-icon">
+                                +
+                            </div>
+
+
+                            <h3>
+                                No companies created yet
+                            </h3>
+
+
+                            <p>
+                                Create the first company workspace
+                                to begin onboarding.
+                            </p>
+
+
+                            <button
+                                type="button"
+                                class="primary-btn open-company-modal"
+                            >
+
+                                + Create Company
+
+                            </button>
+
+
+                        </div>
+
+
+                    </div>
+
+
+                </section>
+
+
+            </section>
+
+
+
+            <!-- =================================================
+                 COMPANIES PAGE
+            ================================================== -->
+
+            <section
+                class="admin-page"
+                id="companiesPage"
+            >
+
+
+                <div class="page-heading">
+
+
+                    <div>
+
+                        <span class="eyebrow">
+                            CLIENT MANAGEMENT
+                        </span>
+
+                        <h1>
+                            Companies
+                        </h1>
+
+                        <p>
+                            View company workspaces, plants and
+                            user access.
+                        </p>
+
+                    </div>
+
+
+
+                    <button
+                        type="button"
+                        class="primary-btn open-company-modal"
+                    >
+
+                        + Create Company
+
+                    </button>
+
+
+                </div>
+
+
+
+                <!-- COMPANY FILTER -->
+
+                <div class="toolbar-panel">
+
+
+                    <div class="search-field">
+
+                        <input
+                            type="text"
+                            id="companySearchInput"
+                            placeholder="Search company name or company code"
+                        >
+
+                    </div>
+
+
+                    <select id="companyStatusFilter">
+
+                        <option value="all">
+                            All Companies
+                        </option>
+
+                        <option value="active">
+                            Active
+                        </option>
+
+                        <option value="inactive">
+                            Inactive
+                        </option>
+
+                    </select>
+
+
+                </div>
+
+
+
+                <!-- COMPANY TABLE -->
+
+                <section class="content-panel table-panel">
+
+
+                    <div class="table-wrapper">
+
+
+                        <table class="data-table">
+
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>
+                                        Company Code
+                                    </th>
+
+                                    <th>
+                                        Company
+                                    </th>
+
+                                    <th>
+                                        Plants
+                                    </th>
+
+                                    <th>
+                                        Company Admin
+                                    </th>
+
+                                    <th>
+                                        Data Collector
+                                    </th>
+
+                                    <th>
+                                        Created
+                                    </th>
+
+                                    <th>
+                                        Action
+                                    </th>
+
+                                </tr>
+
+                            </thead>
+
+
+
+                            <tbody id="companiesTableBody">
+
+
+                                <tr class="table-empty-row">
+
+                                    <td colspan="7">
+
+                                        No companies available.
+
+                                    </td>
+
+                                </tr>
+
+
+                            </tbody>
+
+
+                        </table>
+
+
+                    </div>
+
+
+                </section>
+
+
+            </section>
+
+
+
+            <!-- =================================================
+                 VIEW DATA PAGE
+            ================================================== -->
+
+            <section
+                class="admin-page"
+                id="viewDataPage"
+            >
+
+
+                <div class="page-heading">
+
+
+                    <div>
+
+                        <span class="eyebrow">
+                            CENTRAL DATA ACCESS
+                        </span>
+
+                        <h1>
+                            View Data
+                        </h1>
+
+                        <p>
+                            Select a company to view its submitted
+                            Scope 1 and Scope 2 records.
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- =========================================
+                     FILTER AREA
+                ========================================== -->
+
+                <section class="data-filter-panel">
+
+
+                    <div class="filter-panel-heading">
+
+
+                        <div class="filter-heading-icon">
+                            ▤
+                        </div>
+
+
+                        <div>
+
+                            <h2>
+                                Company Data Workspace
+                            </h2>
+
+                            <p>
+                                Choose a company and apply filters
+                                to view submitted records.
+                            </p>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <div class="data-filter-grid">
+
+
+                        <div class="form-field">
+
+                            <label for="viewCompanySelect">
+                                Company
+                            </label>
+
+                            <select id="viewCompanySelect">
+
+                                <option value="">
+                                    Select Company
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+
+                        <div class="form-field">
+
+                            <label for="viewPlantSelect">
+                                Plant
+                            </label>
+
+                            <select
+                                id="viewPlantSelect"
+                                disabled
+                            >
+
+                                <option value="">
+                                    All Plants
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+
+                        <div class="form-field">
+
+                            <label for="viewScopeSelect">
+                                Scope
+                            </label>
+
+                            <select id="viewScopeSelect">
+
+                                <option value="">
+                                    All Scopes
+                                </option>
+
+                                <option value="Scope 1">
+                                    Scope 1
+                                </option>
+
+                                <option value="Scope 2">
+                                    Scope 2
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                    </div>
+
+
+                </section>
+
+
+
+                <!-- =========================================
+                     SELECT COMPANY STATE
+                ========================================== -->
+
+                <section
+                    class="select-company-state"
+                    id="selectCompanyState"
+                >
+
+
+                    <div class="select-state-icon">
+                        ▤
+                    </div>
+
+
+                    <h3>
+                        Select a company
+                    </h3>
+
+
+                    <p>
+                        Choose a company above to load its
+                        submitted sustainability data.
+                    </p>
+
+
+                </section>
+
+
+
+                <!-- =========================================
+                     DATA RESULTS AREA
+                ========================================== -->
+
+                <section
+                    class="data-results-area"
+                    id="dataResultsArea"
+                >
+
+
+                    <!-- DATA SUMMARY -->
+
+                    <div class="data-summary-grid">
+
+
+                        <article class="summary-card">
+
+                            <span>
+                                Total Records
+                            </span>
+
+                            <strong id="totalRecordCount">
+                                0
+                            </strong>
+
+                        </article>
+
+
+                        <article class="summary-card">
+
+                            <span>
+                                Scope 1 Records
+                            </span>
+
+                            <strong id="scope1RecordCount">
+                                0
+                            </strong>
+
+                        </article>
+
+
+                        <article class="summary-card">
+
+                            <span>
+                                Scope 2 Records
+                            </span>
+
+                            <strong id="scope2RecordCount">
+                                0
+                            </strong>
+
+                        </article>
+
+
+                        <article class="summary-card">
+
+                            <span>
+                                Plants With Data
+                            </span>
+
+                            <strong id="plantsWithDataCount">
+                                0
+                            </strong>
+
+                        </article>
+
+
+                    </div>
+
+
+
+                    <!-- DATA TABLE -->
+
+                    <section class="content-panel table-panel">
+
+
+                        <div class="result-table-heading">
+
+
+                            <div>
+
+                                <span>
+                                    SUBMITTED RECORDS
+                                </span>
+
+                                <h2 id="selectedCompanyDataTitle">
+                                    Company Data
+                                </h2>
+
+                            </div>
+
+
+                            <div
+                                class="loading-indicator"
+                                id="dataLoadingIndicator"
+                            >
+                                Loading...
+                            </div>
+
+
+                        </div>
+
+
+
+                        <div class="table-wrapper">
+
+
+                            <table class="data-table data-record-table">
+
+
+                                <thead>
+
+                                    <tr>
+
+                                        <th>
+                                            Entry ID
+                                        </th>
+
+                                        <th>
+                                            Plant
+                                        </th>
+
+                                        <th>
+                                            Scope
+                                        </th>
+
+                                        <th>
+                                            Reporting Period
+                                        </th>
+
+                                        <th>
+                                            Activity
+                                        </th>
+
+                                        <th>
+                                            Source
+                                        </th>
+
+                                        <th>
+                                            Quantity
+                                        </th>
+
+                                        <th>
+                                            Emissions
+                                        </th>
+
+                                        <th>
+                                            Submitted By
+                                        </th>
+
+                                        <th>
+                                            Submitted At
+                                        </th>
+
+                                        <th>
+                                            Evidence
+                                        </th>
+
+                                    </tr>
+
+                                </thead>
+
+
+
+                                <tbody id="companyDataTableBody">
+
+
+                                    <tr class="table-empty-row">
+
+                                        <td colspan="11">
+
+                                            No submitted data found.
+
+                                        </td>
+
+                                    </tr>
+
+
+                                </tbody>
+
+
+                            </table>
+
+
+                        </div>
+
+
+                    </section>
+
+
+                </section>
+
+
+            </section>
+
+
+        </main>
+
+
+    </div>
+
+
+</div>
+
+
+
+<!-- =====================================================
+     CREATE COMPANY MODAL
+===================================================== -->
+
+<div
+    class="modal-overlay"
+    id="createCompanyModal"
+>
+
+
+    <div class="company-modal">
+
+
+        <!-- =============================================
+             MODAL HEADER
+        ============================================== -->
+
+        <div class="modal-header">
+
+
+            <div>
+
+                <span class="eyebrow">
+                    CLIENT ONBOARDING
+                </span>
+
+                <h2>
+                    Create Company
+                </h2>
+
+                <p>
+                    Create the company workspace, register plants
+                    and configure initial user access.
+                </p>
+
+            </div>
+
+
+
+            <button
+                type="button"
+                class="modal-close-btn"
+                id="closeCompanyModal"
+            >
+                ×
+            </button>
+
+
+        </div>
+
+
+
+        <!-- =============================================
+             STEP INDICATOR
+        ============================================== -->
+
+        <div class="step-navigation">
+
+
+            <div
+                class="step-item active"
+                data-step-indicator="1"
+            >
+
+                <span class="step-number">
+                    1
+                </span>
+
+                <div>
+
+                    <strong>
+                        Company
+                    </strong>
+
+                    <small>
+                        Company information
+                    </small>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="step-connector"></div>
+
+
+
+            <div
+                class="step-item"
+                data-step-indicator="2"
+            >
+
+                <span class="step-number">
+                    2
+                </span>
+
+                <div>
+
+                    <strong>
+                        Plants
+                    </strong>
+
+                    <small>
+                        Operating locations
+                    </small>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="step-connector"></div>
+
+
+
+            <div
+                class="step-item"
+                data-step-indicator="3"
+            >
+
+                <span class="step-number">
+                    3
+                </span>
+
+                <div>
+
+                    <strong>
+                        User Access
+                    </strong>
+
+                    <small>
+                        Admin, Supervisor &amp; Collector
+                    </small>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- =============================================
+             CREATE COMPANY FORM
+        ============================================== -->
+
+        <form
+            id="createCompanyForm"
+            autocomplete="off"
+        >
+
+
+
+            <!-- =========================================
+                 STEP 1
+                 COMPANY DETAILS
+            ========================================== -->
+
+            <section
+                class="form-step active"
+                data-form-step="1"
+            >
+
+
+                <div class="form-section-heading">
+
+
+                    <div class="section-heading-icon">
+                        C
+                    </div>
+
+
+                    <div>
+
+                        <h3>
+                            Company Details
+                        </h3>
+
+                        <p>
+                            Enter the organisation details for the
+                            new company workspace.
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="form-grid">
+
+
+                    <div class="form-field">
+
+                        <label for="companyName">
+                            Company Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="companyName"
+                            name="company_name"
+                            placeholder="Enter company name"
+                            required
+                        >
+
+                    </div>
+
+
+
+                    <div class="form-field">
+
+                        <label for="companyCode">
+                            Company Code
+                        </label>
+
+                        <input
+                            type="text"
+                            id="companyCode"
+                            name="company_code"
+                            placeholder="Example: ABC-001"
+                            required
+                        >
+
+                    </div>
+
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- =========================================
+                 STEP 2
+                 MULTIPLE PLANTS
+            ========================================== -->
+
+            <section
+                class="form-step"
+                data-form-step="2"
+            >
+
+
+                <div class="form-section-heading plant-heading">
+
+
+                    <div class="heading-left">
+
+
+                        <div class="section-heading-icon">
+                            P
+                        </div>
+
+
+                        <div>
+
+                            <h3>
+                                Plant Details
+                            </h3>
+
+                            <p>
+                                Add all plants that belong to this company.
+                            </p>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <button
+                        type="button"
+                        class="secondary-btn"
+                        id="addPlantButton"
+                    >
+
+                        + Add Another Plant
+
+                    </button>
+
+
+                </div>
+
+
+
+                <div id="plantsContainer">
+
+
+                    <!-- FIRST PLANT -->
+
+                    <article
+                        class="plant-form-card"
+                        data-plant-card
+                    >
+
+
+                        <div class="plant-card-heading">
+
+                            <div>
+
+                                <span>
+                                    PLANT 1
+                                </span>
+
+                                <strong>
+                                    Plant Information
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="form-grid">
+
+
+                            <div class="form-field">
+
+                                <label>
+                                    Plant Name
+                                </label>
+
+                                <input
+                                    type="text"
+                                    class="plant-name-input"
+                                    placeholder="Enter plant name"
+                                    required
+                                >
+
+                            </div>
+
+
+
+                            <div class="form-field">
+
+                                <label>
+                                    Plant Code
+                                </label>
+
+                                <input
+                                    type="text"
+                                    class="plant-code-input"
+                                    placeholder="Example: PLT-001"
+                                    required
+                                >
+
+                            </div>
+
+
+
+                            <div class="form-field">
+
+                                <label>
+                                    City
+                                </label>
+
+                                <input
+                                    type="text"
+                                    class="plant-city-input"
+                                    placeholder="Enter city"
+                                    required
+                                >
+
+                            </div>
+
+
+
+                            <div class="form-field">
+
+                                <label>
+                                    State
+                                </label>
+
+                                <input
+                                    type="text"
+                                    class="plant-state-input"
+                                    placeholder="Enter state"
+                                    required
+                                >
+
+                            </div>
+
+
+
+                            <div class="form-field">
+
+                                <label>
+                                    Country
+                                </label>
+
+                                <input
+                                    type="text"
+                                    class="plant-country-input"
+                                    placeholder="Enter country"
+                                    required
+                                >
+
+                            </div>
+
+
+
+                            <div class="form-field">
+
+                                <label>
+                                    PIN / Postal Code
+                                </label>
+
+                                <input
+                                    type="text"
+                                    class="plant-pincode-input"
+                                    placeholder="Enter postal code"
+                                >
+
+                            </div>
+
+
+
+                            <div class="form-field full-width">
+
+                                <label>
+                                    Plant Address
+                                </label>
+
+                                <textarea
+                                    class="plant-address-input"
+                                    placeholder="Enter complete plant address"
+                                    required
+                                ></textarea>
+
+                            </div>
+
+
+                        </div>
+
+
+                    </article>
+
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- =========================================
+                 STEP 3
+                 USER ACCESS (ADMIN / SUPERVISOR / COLLECTOR)
+                 Multiple accounts per role supported.
+            ========================================== -->
+
+            <section
+                class="form-step"
+                data-form-step="3"
+            >
+
+
+                <!-- ============ COMPANY ADMIN(S) ============ -->
+
+                <div class="account-form-section">
+
+                    <div class="form-section-heading plant-heading">
+
+                        <div class="heading-left">
+
+                            <div class="section-heading-icon">
+                                A
+                            </div>
+
+                            <div>
+                                <h3>Company Admin Account(s)</h3>
+                                <p>Add one or more administrator accounts for this company.</p>
+                            </div>
+
+                        </div>
+
+                        <button
+                            type="button"
+                            class="secondary-btn"
+                            id="addAdminButton"
+                        >
+                            + Add Another Admin
+                        </button>
+
+                    </div>
+
+                    <div id="adminsContainer">
+
+                        <article class="plant-form-card" data-admin-card>
+
+                            <div class="plant-card-heading">
+                                <div>
+                                    <span class="plant-number-label">ADMIN 1</span>
+                                    <strong>Administrator Account</strong>
+                                </div>
+                            </div>
+
+                            <div class="form-grid">
+
+                                <div class="form-field">
+                                    <label>Full Name</label>
+                                    <input type="text" class="admin-name-input" placeholder="Enter full name" required>
+                                </div>
+
+                                <div class="form-field">
+                                    <label>Email Address</label>
+                                    <input type="email" class="admin-email-input" placeholder="Enter email" required>
+                                </div>
+
+                                <div class="form-field">
+                                    <label>Password</label>
+                                    <div class="password-wrapper">
+                                        <input type="password" class="admin-password-input" placeholder="Create password" required>
+                                        <button type="button" class="password-toggle" data-inline-toggle>Show</button>
+                                    </div>
+                                </div>
+
+                                <div class="form-field">
+                                    <label>Confirm Password</label>
+                                    <div class="password-wrapper">
+                                        <input type="password" class="admin-confirm-password-input" placeholder="Confirm password" required>
+                                        <button type="button" class="password-toggle" data-inline-toggle>Show</button>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="form-divider"></div>
+
+
+
+                <!-- ============ SUPERVISOR(S) ============ -->
+
+                <div class="account-form-section">
+
+                    <div class="form-section-heading plant-heading">
+
+                        <div class="heading-left">
+
+                            <div class="section-heading-icon">
+                                S
+                            </div>
+
+                            <div>
+                                <h3>Supervisor Account(s)</h3>
+                                <p>Supervisors review and approve/reject Scope 1 &amp; Scope 2 entries submitted by data collectors.</p>
+                            </div>
+
+                        </div>
+
+                        <button
+                            type="button"
+                            class="secondary-btn"
+                            id="addSupervisorButton"
+                        >
+                            + Add Another Supervisor
+                        </button>
+
+                    </div>
+
+                    <div id="supervisorsContainer">
+
+                        <article class="plant-form-card" data-supervisor-card>
+
+                            <div class="plant-card-heading">
+                                <div>
+                                    <span class="plant-number-label">SUPERVISOR 1</span>
+                                    <strong>Supervisor Account</strong>
+                                </div>
+                            </div>
+
+                            <div class="form-grid">
+
+                                <div class="form-field">
+                                    <label>Full Name</label>
+                                    <input type="text" class="supervisor-name-input" placeholder="Enter full name" required>
+                                </div>
+
+                                <div class="form-field">
+                                    <label>Email Address</label>
+                                    <input type="email" class="supervisor-email-input" placeholder="Enter email" required>
+                                </div>
+
+                                <div class="form-field">
+                                    <label>Password</label>
+                                    <div class="password-wrapper">
+                                        <input type="password" class="supervisor-password-input" placeholder="Create password" required>
+                                        <button type="button" class="password-toggle" data-inline-toggle>Show</button>
+                                    </div>
+                                </div>
+
+                                <div class="form-field">
+                                    <label>Confirm Password</label>
+                                    <div class="password-wrapper">
+                                        <input type="password" class="supervisor-confirm-password-input" placeholder="Confirm password" required>
+                                        <button type="button" class="password-toggle" data-inline-toggle>Show</button>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="form-divider"></div>
+
+
+
+                <!-- ============ DATA COLLECTOR(S) ============ -->
+
+                <div class="account-form-section">
+
+                    <div class="form-section-heading plant-heading">
+
+                        <div class="heading-left">
+
+                            <div class="section-heading-icon">
+                                D
+                            </div>
+
+                            <div>
+                                <h3>Data Collector Account(s)</h3>
+                                <p>These accounts belong to the company. During data entry, collectors choose from the company's saved plants.</p>
+                            </div>
+
+                        </div>
+
+                        <button
+                            type="button"
+                            class="secondary-btn"
+                            id="addCollectorButton"
+                        >
+                            + Add Another Collector
+                        </button>
+
+                    </div>
+
+                    <div id="collectorsContainer">
+
+                        <article class="plant-form-card" data-collector-card>
+
+                            <div class="plant-card-heading">
+                                <div>
+                                    <span class="plant-number-label">COLLECTOR 1</span>
+                                    <strong>Data Collector Account</strong>
+                                </div>
+                            </div>
+
+                            <div class="form-grid">
+
+                                <div class="form-field">
+                                    <label>Full Name</label>
+                                    <input type="text" class="collector-name-input" placeholder="Enter full name" required>
+                                </div>
+
+                                <div class="form-field">
+                                    <label>Email Address</label>
+                                    <input type="email" class="collector-email-input" placeholder="Enter email" required>
+                                </div>
+
+                                <div class="form-field">
+                                    <label>Password</label>
+                                    <div class="password-wrapper">
+                                        <input type="password" class="collector-password-input" placeholder="Create password" required>
+                                        <button type="button" class="password-toggle" data-inline-toggle>Show</button>
+                                    </div>
+                                </div>
+
+                                <div class="form-field">
+                                    <label>Confirm Password</label>
+                                    <div class="password-wrapper">
+                                        <input type="password" class="collector-confirm-password-input" placeholder="Confirm password" required>
+                                        <button type="button" class="password-toggle" data-inline-toggle>Show</button>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- =========================================
+                 FORM MESSAGE
+            ========================================== -->
+
+            <div
+                class="form-message"
+                id="companyFormMessage"
+            ></div>
+
+
+
+            <!-- =========================================
+                 MODAL FOOTER
+            ========================================== -->
+
+            <div class="modal-footer">
+
+
+                <button
+                    type="button"
+                    class="secondary-btn"
+                    id="previousStepButton"
+                >
+
+                    ← Previous
+
+                </button>
+
+
+
+                <div class="footer-right">
+
+
+                    <button
+                        type="button"
+                        class="secondary-btn"
+                        id="cancelCompanyButton"
+                    >
+
+                        Cancel
+
+                    </button>
+
+
+
+                    <button
+                        type="button"
+                        class="primary-btn"
+                        id="nextStepButton"
+                    >
+
+                        Continue →
+
+                    </button>
+
+
+
+                    <button
+                        type="submit"
+                        class="primary-btn"
+                        id="createCompanySubmitButton"
+                    >
+
+                        Create Company
+
+                    </button>
+
+
+                </div>
+
+
+            </div>
+
+
+        </form>
+
+
+    </div>
+
+
+</div>
+
+
+
+<!-- =====================================================
+     COMPANY DETAILS / MANAGE MODAL
+===================================================== -->
+
+<div
+    class="modal-overlay"
+    id="companyDetailsModal"
+>
+
+
+    <div class="company-modal company-details-modal">
+
+
+        <div class="modal-header">
+
+
+            <div>
+
+                <span class="eyebrow">
+                    COMPANY WORKSPACE
+                </span>
+
+                <h2 id="detailsCompanyName">
+                    Company Details
+                </h2>
+
+                <p id="detailsCompanyCode">
+                    Company Code
+                </p>
+
+            </div>
+
+
+
+            <button
+                type="button"
+                class="modal-close-btn"
+                id="closeCompanyDetailsModal"
+            >
+                ×
+            </button>
+
+
+        </div>
+
+
+
+        <div class="company-details-content">
+
+
+            <section class="details-section">
+
+
+                <div class="details-section-heading">
+
+                    <div>
+
+                        <span>
+                            PLANTS
+                        </span>
+
+                        <h3>
+                            Registered Plants
+                        </h3>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="secondary-btn"
+                        id="detailsAddPlantButton"
+                    >
+
+                        + Add Plant
+
+                    </button>
+
+                </div>
+
+
+
+                <div
+                    class="details-list"
+                    id="detailsPlantList"
+                >
+
+                    <div class="details-empty">
+                        No plants found.
+                    </div>
+
+                </div>
+
+
+            </section>
+
+
+
+            <section class="details-section">
+
+
+                <div class="details-section-heading">
+
+                    <div>
+
+                        <span>
+                            USER ACCESS
+                        </span>
+
+                        <h3>
+                            Company Users
+                        </h3>
+
+                    </div>
+
+                </div>
+
+
+
+                <div
+                    class="details-list"
+                    id="detailsUserList"
+                >
+
+                    <div class="details-empty">
+                        No users found.
+                    </div>
+
+                </div>
+
+
+            </section>
+
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+
+<script src="/js/vsc-admin.js"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Supervisor · VardaOne | ESG Data Intelligence Platform</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/supervisor.css">
+
+</head>
+
+<body>
+
+    <div class="app-shell">
+
+        <!-- =====================================
+             SIDEBAR
+        ====================================== -->
+
+        <aside class="sidebar">
+
+            <div class="sidebar-logo">
+                <strong>VardaOne</strong>
+                <span>Supervisor</span>
+            </div>
+
+
+            <nav class="sidebar-nav">
+
+                <button
+                    class="nav-item active"
+                    data-page="reviewPage"
+                    data-title="Pending Review"
+                >
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    Pending Review
+                </button>
+
+                <button
+                    class="nav-item"
+                    data-page="allEntriesPage"
+                    data-title="All Entries"
+                >
+                    <i class="fa-solid fa-list"></i>
+                    All Entries
+                </button>
+
+            </nav>
+
+
+            <div class="sidebar-profile">
+
+                <div class="profile-avatar" id="supervisorAvatar">
+                    SV
+                </div>
+
+                <div class="profile-copy">
+
+                    <strong id="sidebarSupervisorName">
+                        Supervisor
+                    </strong>
+
+                    <span id="sidebarCompanyName">
+                        Loading company...
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <a
+                href="/logout"
+                class="sidebar-logout"
+                id="logoutButton"
+            >
+                Log Out
+            </a>
+
+        </aside>
+
+
+
+        <!-- =====================================
+             MAIN CONTENT
+        ====================================== -->
+
+        <main class="main-content">
+
+            <!-- TOPBAR -->
+
+            <header class="topbar">
+
+                <h1 id="currentPageTitle">Pending Review</h1>
+
+                <div class="topbar-profile">
+
+                    <div class="profile-avatar" id="topbarSupervisorAvatar">
+                        SV
+                    </div>
+
+                    <div class="profile-copy">
+                        <strong id="topbarSupervisorName">Supervisor</strong>
+                        <span id="topbarCompanyName">Loading...</span>
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- OVERVIEW CARDS -->
+
+            <section class="overview-cards">
+
+                <div class="overview-card pending">
+                    <span class="overview-label">Pending</span>
+                    <strong id="overviewPending">—</strong>
+                </div>
+
+                <div class="overview-card approved">
+                    <span class="overview-label">Approved</span>
+                    <strong id="overviewApproved">—</strong>
+                </div>
+
+                <div class="overview-card rejected">
+                    <span class="overview-label">Rejected</span>
+                    <strong id="overviewRejected">—</strong>
+                </div>
+
+            </section>
+
+
+            <!-- =====================================
+                 PAGE: PENDING REVIEW
+            ====================================== -->
+
+            <section class="supervisor-page active" id="reviewPage">
+
+                <div class="panel-heading">
+                    <h2>Entries Awaiting Review</h2>
+                    <button class="secondary-btn" id="refreshReviewButton">
+                        <i class="fa-solid fa-rotate"></i>
+                        Refresh
+                    </button>
+                </div>
+
+
+                <div class="entry-list" id="pendingEntryList">
+
+                    <div class="empty-state">
+                        Loading entries...
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================================
+                 PAGE: ALL ENTRIES
+            ====================================== -->
+
+            <section class="supervisor-page" id="allEntriesPage">
+
+                <div class="panel-heading">
+
+                    <h2>All Submissions</h2>
+
+                    <div class="filter-row">
+
+                        <select id="statusFilter">
+                            <option value="">All statuses</option>
+                            <option value="Pending">Pending</option>
+                            <option value="Approved">Approved</option>
+                            <option value="Rejected">Rejected</option>
+                        </select>
+
+                        <button class="secondary-btn" id="refreshAllButton">
+                            <i class="fa-solid fa-rotate"></i>
+                            Refresh
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="table-wrapper">
+
+                    <table class="data-table">
+
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Plant</th>
+                                <th>Scope</th>
+                                <th>Month</th>
+                                <th>Category</th>
+                                <th>Source</th>
+                                <th>Quantity</th>
+                                <th>Submitted By</th>
+                                <th>Status</th>
+                                <th>Evidence</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="allEntriesBody">
+                            <tr class="table-empty-row">
+                                <td colspan="10">Loading submissions...</td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+
+    <!-- =====================================
+         REVIEW MODAL (Approve / Reject with notes)
+    ====================================== -->
+
+    <div class="modal-overlay" id="reviewModal">
+
+        <div class="modal-box">
+
+            <h3 id="reviewModalTitle">Review Entry</h3>
+
+            <div class="modal-entry-details" id="reviewModalDetails">
+                <!-- filled dynamically -->
+            </div>
+
+            <label for="reviewNotes">Notes (optional)</label>
+            <textarea
+                id="reviewNotes"
+                rows="3"
+                placeholder="Add a comment for the data collector..."
+            ></textarea>
+
+            <div class="modal-actions">
+
+                <button class="ghost-btn" id="cancelReviewButton">
+                    Cancel
+                </button>
+
+                <button class="danger-btn" id="rejectButton">
+                    Reject
+                </button>
+
+                <button class="primary-btn" id="approveButton">
+                    Approve
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <script src="https://kit.fontawesome.com/00000000.js" crossorigin="anonymous"></script>
+    <script src="/js/supervisor.js"></script>
+
+</body>
+
+</html>
