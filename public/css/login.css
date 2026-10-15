@@ -1260,7 +1260,7 @@ input {
 
         top: 8px;
 
-        height: 62px;
+        height: 60px;
 
         padding: 0 14px;
     }
@@ -1268,9 +1268,11 @@ input {
 
     .vsc-logo {
 
-        width: 200px;
+        max-width: 130px;
 
-        height: 35px;
+        height: auto;
+
+        object-fit: contain;
     }
 
 
@@ -1283,15 +1285,21 @@ input {
 
     .brand {
 
-        gap: 10px;
+        gap: 8px;
     }
 
 
     .vardaone-name {
 
-        font-size: 18px;
+        font-size: 17px;
     }
 
+
+    .back-home {
+        height: 36px;
+        padding: 0 12px;
+        font-size: 11px;
+    }
 
     .back-home span {
 
@@ -1302,40 +1310,52 @@ input {
     .login-page {
 
         padding:
-            100px 18px
-            35px;
+            90px 16px
+            30px;
     }
 
 
     .login-intro h1 {
 
-        font-size: 43px;
+        font-size: clamp(28px, 8.5vw, 38px);
 
-        letter-spacing: -2px;
+        letter-spacing: -1.2px;
+
+        line-height: 1.15;
     }
 
 
     .intro-description {
 
-        font-size: 15px;
+        font-size: 14px;
+
+        line-height: 1.65;
     }
 
 
     .login-container {
 
-        gap: 30px;
+        gap: 24px;
     }
 
 
     .login-card {
 
-        padding: 26px 20px;
+        padding: 24px 18px;
+
+        border-radius: 12px;
     }
 
 
     .card-header h2 {
 
-        font-size: 29px;
+        font-size: 24px;
+
+        line-height: 1.25;
+    }
+
+    .input-box input {
+        font-size: 16px;
     }
 
 
@@ -1392,32 +1412,34 @@ input {
     }
 
 }
-/* MINIMUM FONT SIZE FIX */
+/* MINIMUM FONT SIZE FIX (DESKTOP) */
 
-.section-label,
-.hero-kicker,
-.brand small,
-.nav-links a,
-.enter-button,
-.text-button,
-.trust-strip,
-.card-number,
-.capability-card small,
-.framework-card > span,
-.method-note,
-.lineage-node b,
-.lineage-node i,
-.lineage-node p,
-.workflow article b,
-.workflow p,
-.workspace-copy > span,
-.workspace-copy li,
-.cta-inner > div > span,
-.cta-inner p,
-.footer-brand > span,
-.footer-brand p,
-.footer-column h4,
-.footer-column a,
-.footer-bottom {
-    font-size: 15px;
+@media (min-width: 769px) {
+    .section-label,
+    .hero-kicker,
+    .brand small,
+    .nav-links a,
+    .enter-button,
+    .text-button,
+    .trust-strip,
+    .card-number,
+    .capability-card small,
+    .framework-card > span,
+    .method-note,
+    .lineage-node b,
+    .lineage-node i,
+    .lineage-node p,
+    .workflow article b,
+    .workflow p,
+    .workspace-copy > span,
+    .workspace-copy li,
+    .cta-inner > div > span,
+    .cta-inner p,
+    .footer-brand > span,
+    .footer-brand p,
+    .footer-column h4,
+    .footer-column a,
+    .footer-bottom {
+        font-size: 15px;
+    }
 }
